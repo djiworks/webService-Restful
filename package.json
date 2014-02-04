@@ -1,0 +1,10 @@
+{
+  "name": "WebService-RESTful",
+  "description": "a first RESTful webservice",
+  "version": "0.0.8",
+  "dependencies": {
+    "express": "3.x",
+    "jwt-simple": "1.x"
+  },
+  "author": "Djothi Grondin <djothi.grondin@live.fr>"
+}

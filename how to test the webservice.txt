@@ -1,0 +1,36 @@
+Comamnd Line to test webservice
+
+//Simple request
+curl -H 'Content-Type: application/json' -H 'Accept: application/json' -X GET -k https://localhost:8080
+
+//Post request
+curl -H 'Content-Type: application/json' -H 'Accept: application/json' -X POST -d '{"name":"koko"}' -k https://localhost:8080/one_route
+
+
+/************* Test Basic Auth ********************/
+
+//Simple request
+curl -u username:password -k https://localhost:8080/
+
+//Post request
+curl -u username:password -H 'Content-Type: application/json' -H 'Accept: application/json' -X POST -d '{"name":"koko"}' -k https://localhost:8080/one_route
+
+/************* Test JSON Web Token ********************/
+
+//Ask a token
+curl -H 'Content-Type: application/json' -H 'Accept: */*' -H 'username: foo' -H 'password: foo' -X GET -k https://localhost:8080/324FDS/auth
+
+//Fake request all false
+curl -H 'Content-Type: application/json' -H 'Accept: */*' -H 'bearer: kokoko' -H 'apikey: ezfze32Eds' -X GET -k https://localhost:8080/
+
+//Fake request only apikey false
+curl -H 'Content-Type: application/json' -H 'Accept: */*' -H 'bearer: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImtvbyIsInV1aWQiOiIzMjRGRFMifQ.fu1WDNnQ_WuBXDUD56r5d7rOght72Ldaxfl86GBDEj4' -H 'apikey: ezfze32Eds' -X GET -k https://localhost:8080/
+
+//Fake request only bearer false
+curl -H 'Content-Type: application/json' -H 'Accept: */*' -H 'bearer:fferuhi' -H 'apikey: 324FDS' -X GET -k https://localhost:8080/
+
+//True request
+curl -H 'Content-Type: application/json' -H 'Accept: */*' -H 'bearer: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImtvbyIsInV1aWQiOiIzMjRGRFMifQ.fu1WDNnQ_WuBXDUD56r5d7rOght72Ldaxfl86GBDEj4' -H 'apikey: 324FDS' -X GET -k https://localhost:8080/
+
+//Post request
+curl -H 'Content-Type: application/json' -H 'Accept: */*' -H 'bearer: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImtvbyIsInV1aWQiOiIzMjRGRFMifQ.fu1WDNnQ_WuBXDUD56r5d7rOght72Ldaxfl86GBDEj4' -H 'apikey: 324FDS' -X POST -d '{"name":"koko"}' -k https://localhost:8080/one_route
